@@ -3,4 +3,17 @@
     <string name="join_the_heritage_of_excellence">Join the heritage of Excellence</string>
     <string name="select_year">Select Year</string>
     <string name="select_branch">Select Branch</string>
+    <string name="title_activity_test">test</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">St. Aloysius Institute Of Technology</string>
+    <string name="nav_header_subtitle">9399287401 , 9425155175 saitjbp@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">SAIT Gallery</string>
+    <string name="menu_about">About SAIT</string>
+    <string name="menu_today_attendance">Today\'s Attendence</string>
+    <string name="menu_total_attendance">Total Attendence</string>
+    <string name="menu_batch_mates">Your Batchmates</string>
 </resources>
