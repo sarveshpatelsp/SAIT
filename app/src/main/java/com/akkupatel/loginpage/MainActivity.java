@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     void navigateTotest()
     {
         finish();
-        Intent intent = new Intent(MainActivity.this , test.class);
+        Intent intent = new Intent(MainActivity.this , home.class);
         startActivity(intent);
     }
 }

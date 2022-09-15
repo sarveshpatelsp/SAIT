@@ -12,16 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginPage">
         <activity
-            android:name=".test2"
-            android:exported="true" />
-        <activity
-            android:name=".test"
+            android:name=".home"
             android:exported="true"
-            android:label="@string/title_activity_test"
+            android:label="@string/title_activity_home"
             android:theme="@style/Theme.LoginPage.NoActionBar" />
-        <activity
-            android:name=".HomeScreen"
-            android:exported="true" />
         <activity
             android:name=".OtpScreen"
             android:exported="true" />
