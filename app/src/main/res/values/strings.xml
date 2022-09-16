@@ -16,4 +16,6 @@
     <string name="menu_today_attendance">Today\'s Attendence</string>
     <string name="menu_total_attendance">Total Attendence</string>
     <string name="menu_batch_mates">Your Batchmates</string>
+    <string name="menu_sign_out">Sign Out</string>
+    <string name="sarvesh_patel">Sarvesh Patel</string>
 </resources>
