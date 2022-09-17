@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "735579741456",
+    "project_id": "sait-1663137743480",
+    "storage_bucket": "sait-1663137743480.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735579741456:android:17a3efec3253cd7503d995",
+        "android_client_info": {
+          "package_name": "com.akkupatel.loginpage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735579741456-9404cvhovbmrsa9c8slc5h7poh7hmn1c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.akkupatel.loginpage",
+            "certificate_hash": "95e08b77fbf9f4eacc2d6be8ce5d5ec6df660e6f"
+          }
+        },
+        {
+          "client_id": "735579741456-4ha30oso7puqq2pvq2jsu4gkkg617ptb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK2Cw3WYxbGq2AUUU-fp47tDYgLK4cIcA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735579741456-4ha30oso7puqq2pvq2jsu4gkkg617ptb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
