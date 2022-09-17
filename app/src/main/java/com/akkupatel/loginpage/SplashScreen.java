@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class SplashScreen extends AppCompatActivity {
+import com.google.firebase.firestore.FirebaseFirestore;
 
+public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,7 @@ public class SplashScreen extends AppCompatActivity {
                 finally {
                     Intent intent = new Intent(SplashScreen.this , AskingFromUser.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         }; thread.start();
