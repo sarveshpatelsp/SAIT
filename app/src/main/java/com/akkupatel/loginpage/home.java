@@ -2,11 +2,14 @@ package com.akkupatel.loginpage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,7 +25,8 @@ public class home extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
-    View signOut;
+    private DrawerLayout drawerLayout;
+    private  NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,21 @@ public class home extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        signOut = findViewById(R.id.nav_sign_out);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.nav_sign_out:
+                        Toast.makeText(home.this, "Clicked", Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+                return true;
+            }
+        });
 
         setSupportActionBar(binding.appBarTest.toolbar);
         binding.appBarTest.fab.setOnClickListener(new View.OnClickListener() {
