@@ -40,11 +40,23 @@ public class home extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId())
+                int id = item.getItemId();
+                if(id==R.id.nav_home)
+                    Toast.makeText(home.this, "Home", Toast.LENGTH_SHORT).show();
+                else if(id==R.id.nav_about)
+                    Toast.makeText(home.this, "About", Toast.LENGTH_SHORT).show();
+                else if(id==R.id.nav_gallery)
+                    Toast.makeText(home.this, "Gallery", Toast.LENGTH_SHORT).show();
+                else if(id==R.id.nav_today_attendence)
+                    Toast.makeText(home.this, "Today", Toast.LENGTH_SHORT).show();
+                else if(id==R.id.nav_total_attendence)
+                    Toast.makeText(home.this, "Total", Toast.LENGTH_SHORT).show();
+                else if(id==R.id.nav_batch_mates)
+                    Toast.makeText(home.this, "Batch-mates", Toast.LENGTH_SHORT).show();
+                else
                 {
-                    case R.id.nav_sign_out:
-                        Toast.makeText(home.this, "Clicked", Toast.LENGTH_SHORT).show();
-                        return true;
+                    Intent intent = new Intent(home.this , MainActivity.class);
+                    startActivity(intent);
                 }
                 return true;
             }
