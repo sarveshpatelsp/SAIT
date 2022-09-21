@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -27,6 +26,7 @@ public class home extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private DrawerLayout drawerLayout;
     private  NavigationView navigationView;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +40,18 @@ public class home extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                drawerLayout.close();
                 int id = item.getItemId();
-                if(id==R.id.nav_home)
+                if(id==R.id.nav_home) {
                     Toast.makeText(home.this, "Home", Toast.LENGTH_SHORT).show();
+                    navController.navigate(R.id.nav_home);
+                }
                 else if(id==R.id.nav_about)
                     Toast.makeText(home.this, "About", Toast.LENGTH_SHORT).show();
-                else if(id==R.id.nav_gallery)
+                else if(id==R.id.nav_gallery) {
                     Toast.makeText(home.this, "Gallery", Toast.LENGTH_SHORT).show();
+                    navController.navigate(R.id.nav_gallery);
+                }
                 else if(id==R.id.nav_today_attendence)
                     Toast.makeText(home.this, "Today", Toast.LENGTH_SHORT).show();
                 else if(id==R.id.nav_total_attendence)
@@ -55,6 +60,7 @@ public class home extends AppCompatActivity {
                     Toast.makeText(home.this, "Batch-mates", Toast.LENGTH_SHORT).show();
                 else
                 {
+                    Toast.makeText(home.this, "Sign Out", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(home.this , MainActivity.class);
                     startActivity(intent);
                 }
@@ -74,12 +80,12 @@ public class home extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home)
+                R.id.nav_home,R.id.nav_gallery)
                 .setOpenableLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_test);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_test);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        //NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     @Override
