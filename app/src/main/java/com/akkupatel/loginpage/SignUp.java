@@ -1,32 +1,52 @@
 package com.akkupatel.loginpage;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+import com.akkupatel.loginpage.databinding.ActivityMainBinding;
 
 public class SignUp extends AppCompatActivity {
+
     String[] selectYear = {"1" , "2" , "3" , "4"};
     String[] selectBranch = {"CS" , "ME" , "CE" , "EE" , "ECE"} ;
-    AutoCompleteTextView autoCompleteTextView;
-    AutoCompleteTextView autoCompleteTextView1;
-    ArrayAdapter<String> arrayAdapter;
-    ArrayAdapter<String> arrayAdapter1;
-        TextView textView;
+    AutoCompleteTextView autoCompleteTextView , autoCompleteTextView1;
+    ArrayAdapter<String> arrayAdapter , arrayAdapter1;
+    ActivityMainBinding binding;
+
+        TextView alreadyHaveAccount;
+        Button registerButton;
+        EditText fullName , enrollmentNo , email , password;
+        SharedPreferences sharedPreferences;
+        private static final String MY_PREF_NAME = "my_pref" ;
+        private static final String KEY_FULL_NAME = "full_name";
+        private static final String KEY_ENROLLMENT = "enrollment";
+        private static final String KEY_EMAIL = "email";
+        private static final String KEY_PASSWORD = "password";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        textView = findViewById(R.id.alreadyhaveaccount);
+
+        alreadyHaveAccount = findViewById(R.id.alreadyhaveaccount);
         autoCompleteTextView = findViewById(R.id.autocomplete);
         autoCompleteTextView1 = findViewById(R.id.autocomplete1);
+        fullName = findViewById(R.id.fullname);
+        enrollmentNo = findViewById(R.id.enrollment);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        registerButton = findViewById(R.id.registerButton);
 
-        textView.setOnClickListener(new View.OnClickListener() {
+        alreadyHaveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SignUp.this, MainActivity.class);
@@ -49,6 +69,26 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String branch = adapterView.getItemAtPosition(i).toString();
+            }
+        });
+
+        sharedPreferences = getSharedPreferences(MY_PREF_NAME , MODE_PRIVATE);
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(KEY_FULL_NAME , fullName.getText().toString());
+                editor.putString(KEY_ENROLLMENT , enrollmentNo.getText().toString());
+                editor.putString(KEY_EMAIL , email.getText().toString());
+                editor.putString(KEY_PASSWORD , password.getText().toString());
+                editor.putBoolean(KEY_FULL_NAME , true);
+
+                editor.apply();
+
+                startActivity(new Intent(SignUp.this , home.class));
+                Toast.makeText(SignUp.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
             }
         });
     }

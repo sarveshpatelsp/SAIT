@@ -19,11 +19,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/profile_name"
+        app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </ImageView>
+        ></ImageView>
 
     <TextView
         android:id="@+id/profile_name"
@@ -33,13 +32,12 @@
         android:fontFamily="@font/ubuntu"
         android:text="@string/sarvesh_patel"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/layout1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="246dp">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"></TextView>
 
     <LinearLayout
         android:id="@+id/layout1"
@@ -60,6 +58,7 @@
         </ImageView>
 
         <TextView
+            android:id="@+id/profile_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -89,6 +88,7 @@
         </ImageView>
 
         <TextView
+            android:id="@+id/profile_enrollment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -118,6 +118,7 @@
         </ImageView>
 
         <TextView
+            android:id="@+id/profile_branch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -139,5 +140,17 @@
         android:src="@drawable/ic_baseline_add_a_photo_24"
         app:layout_constraintBottom_toBottomOf="@id/background_profile"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="144dp"
+        android:layout_height="126dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12"
+        app:srcCompat="@drawable/akku" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

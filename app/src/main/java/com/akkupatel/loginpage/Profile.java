@@ -1,30 +1,40 @@
 package com.akkupatel.loginpage;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import com.google.android.gms.cast.framework.media.ImagePicker;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.widget.TextView;
 
 public class Profile extends AppCompatActivity {
-    ImageView bg_profile;
-    FloatingActionButton fab;
+
+    TextView profileName , profileEmail , profileEnrollment;
+
+    SharedPreferences sharedPreferences;
+    private static final String MY_PREF_NAME = "my_pref" ;
+    private static final String KEY_FULL_NAME = "full_name";
+    private static final String KEY_ENROLLMENT = "enrollment";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_PASSWORD = "password";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        fab = findViewById(R.id.floatingActionButton);
-        bg_profile = findViewById(R.id.background_profile);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                ImagePicker.with(Profile.this)
-//                        .crop()	    			//Crop image(Optional), Check Customization for more option
-//                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
-//                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-//                        .start();
-            }
-        });
+        profileName = findViewById(R.id.profile_name);
+        profileEmail = findViewById(R.id.profile_email);
+        profileEnrollment = findViewById(R.id.profile_enrollment);
+
+        sharedPreferences = getSharedPreferences(MY_PREF_NAME , MODE_PRIVATE);
+        String fullname = sharedPreferences.getString(KEY_FULL_NAME , null);
+        String email = sharedPreferences.getString(KEY_EMAIL , null);
+        String enrollment = sharedPreferences.getString(KEY_ENROLLMENT , null);
+
+        if(fullname!=null || email != null || enrollment != null)
+        {
+            profileName.setText(fullname);
+            profileEmail.setText(email);
+            profileEnrollment.setText(enrollment);
+        }
     }
 }

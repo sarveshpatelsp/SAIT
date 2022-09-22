@@ -1,6 +1,7 @@
 package com.akkupatel.loginpage;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +28,13 @@ public class home extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private  NavigationView navigationView;
     private NavController navController;
+
+    SharedPreferences sharedPreferences;
+    private static final String MY_PREF_NAME = "my_pref" ;
+    private static final String KEY_FULL_NAME = "full_name";
+    private static final String KEY_ENROLLMENT = "enrollment";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_PASSWORD = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +68,13 @@ public class home extends AppCompatActivity {
                     Toast.makeText(home.this, "Batch-mates", Toast.LENGTH_SHORT).show();
                 else
                 {
-                    Toast.makeText(home.this, "Sign Out", Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.clear();
+                    editor.commit();
+                    Toast.makeText(home.this, "Sign Out Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(home.this , MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }
                 return true;
             }
