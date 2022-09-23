@@ -69,11 +69,11 @@ public class home extends AppCompatActivity {
                 else
                 {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.clear();
-                    editor.commit();
                     Toast.makeText(home.this, "Sign Out Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(home.this , MainActivity.class);
                     startActivity(intent);
+                    editor.putBoolean("flag" , false);
+                    editor.apply();
                     finish();
                 }
                 return true;

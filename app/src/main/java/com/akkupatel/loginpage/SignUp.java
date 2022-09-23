@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.akkupatel.loginpage.databinding.ActivityMainBinding;
 
 public class SignUp extends AppCompatActivity {
 
@@ -20,11 +19,10 @@ public class SignUp extends AppCompatActivity {
     String[] selectBranch = {"CS" , "ME" , "CE" , "EE" , "ECE"} ;
     AutoCompleteTextView autoCompleteTextView , autoCompleteTextView1;
     ArrayAdapter<String> arrayAdapter , arrayAdapter1;
-    ActivityMainBinding binding;
 
         TextView alreadyHaveAccount;
         Button registerButton;
-        EditText fullName , enrollmentNo , email , password;
+        EditText fullName , enrollmentNo , eMail , passWord;
         SharedPreferences sharedPreferences;
         private static final String MY_PREF_NAME = "my_pref" ;
         private static final String KEY_FULL_NAME = "full_name";
@@ -37,13 +35,13 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        alreadyHaveAccount = findViewById(R.id.alreadyhaveaccount);
         autoCompleteTextView = findViewById(R.id.autocomplete);
         autoCompleteTextView1 = findViewById(R.id.autocomplete1);
+        alreadyHaveAccount = findViewById(R.id.alreadyhaveaccount);
         fullName = findViewById(R.id.fullname);
         enrollmentNo = findViewById(R.id.enrollment);
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
+        eMail = findViewById(R.id.email);
+        passWord = findViewById(R.id.password);
         registerButton = findViewById(R.id.registerButton);
 
         alreadyHaveAccount.setOnClickListener(new View.OnClickListener() {
@@ -81,14 +79,15 @@ public class SignUp extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(KEY_FULL_NAME , fullName.getText().toString());
                 editor.putString(KEY_ENROLLMENT , enrollmentNo.getText().toString());
-                editor.putString(KEY_EMAIL , email.getText().toString());
-                editor.putString(KEY_PASSWORD , password.getText().toString());
-                editor.putBoolean(KEY_FULL_NAME , true);
+                editor.putString(KEY_EMAIL , eMail.getText().toString());
+                editor.putString(KEY_PASSWORD , passWord.getText().toString());
+                editor.putBoolean("flag" , true);
 
                 editor.apply();
 
                 startActivity(new Intent(SignUp.this , home.class));
                 Toast.makeText(SignUp.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
