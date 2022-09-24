@@ -1,13 +1,9 @@
 package com.akkupatel.loginpage;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import com.akkupatel.loginpage.ui.home.HomeFragment;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -36,10 +32,12 @@ public class SplashScreen extends AppCompatActivity {
                 finally {
                     SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF_NAME , MODE_PRIVATE);
                     Boolean check = sharedPreferences.getBoolean("flag" , false);
+                    Intent intent;
                     if(check)
-                        startActivity(new Intent(SplashScreen.this , home.class));
+                        intent = new Intent(SplashScreen.this , home.class);
                     else
-                        startActivity(new Intent(SplashScreen.this , AskingFromUser.class));
+                        intent = new Intent(SplashScreen.this , AskingFromUser.class);
+                    startActivity(intent);
                     finish();
                 }
             }

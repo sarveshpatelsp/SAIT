@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -17,9 +16,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.akkupatel.loginpage.databinding.ActivityHomeBinding;
-import com.google.firebase.firestore.FirebaseFirestore;
-import java.util.HashMap;
-import java.util.Map;
 
 public class home extends AppCompatActivity {
 
@@ -44,6 +40,7 @@ public class home extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        sharedPreferences = getSharedPreferences(MY_PREF_NAME , MODE_PRIVATE);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -69,11 +66,11 @@ public class home extends AppCompatActivity {
                 else
                 {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("flag" , false);
+                    editor.apply();
                     Toast.makeText(home.this, "Sign Out Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(home.this , MainActivity.class);
                     startActivity(intent);
-                    editor.putBoolean("flag" , false);
-                    editor.apply();
                     finish();
                 }
                 return true;
