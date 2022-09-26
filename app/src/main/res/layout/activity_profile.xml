@@ -14,15 +14,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="7dp"
         app:srcCompat="@drawable/side_nav_bar" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/profile_name"
-        app:layout_constraintTop_toTopOf="parent"
-
-        ></ImageView>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </ImageView>
 
     <TextView
         android:id="@+id/profile_name"
@@ -129,13 +130,44 @@
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:id="@+id/layout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout3">
+
+        <ImageView
+            android:layout_width="54dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_baseline_person_black_24">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/status_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Student of St. Aloysius Institute of Technology"
+            android:textSize="20sp">
+
+        </TextView>
+
+    </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
+        android:layout_marginEnd="9dp"
         android:layout_marginRight="7dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="2dp"
         android:clickable="true"
         android:src="@drawable/ic_baseline_add_a_photo_24"
         app:layout_constraintBottom_toBottomOf="@id/background_profile"
@@ -151,6 +183,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.12"
-        app:srcCompat="@drawable/akku" />
+        app:srcCompat="@drawable/akku"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

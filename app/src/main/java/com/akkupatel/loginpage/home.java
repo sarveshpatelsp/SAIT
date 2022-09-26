@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class home extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private  NavigationView navigationView;
     private NavController navController;
+    ImageView image;
 
     SharedPreferences sharedPreferences;
     private static final String MY_PREF_NAME = "my_pref" ;
@@ -40,6 +42,7 @@ public class home extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        image = findViewById(R.id.image);
         sharedPreferences = getSharedPreferences(MY_PREF_NAME , MODE_PRIVATE);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
