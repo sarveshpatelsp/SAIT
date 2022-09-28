@@ -1,8 +1,14 @@
 package com.akkupatel.loginpage;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -13,7 +19,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.akkupatel.loginpage.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Profile extends AppCompatActivity {
@@ -23,6 +31,7 @@ public class Profile extends AppCompatActivity {
     FloatingActionButton bg_fab;
     private final int GALLERY_REQ_CODE = 1000;
     private final int CAMERA_REQ_CODE = 100;
+    private ActivityMainBinding activityMainBinding;
 
     SharedPreferences sharedPreferences;
     private static final String MY_PREF_NAME = "my_pref" ;
@@ -34,6 +43,7 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_profile);
         profileName = findViewById(R.id.profile_name);
         profileEmail = findViewById(R.id.profile_email);
@@ -53,6 +63,9 @@ public class Profile extends AppCompatActivity {
             profileEnrollment.setText(enrollment);
         }
 
+        ActivityResultLauncher<String> cameraPermission =
+                registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> { });
+
         bg_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +84,7 @@ public class Profile extends AppCompatActivity {
                 camera_dialog.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        cameraPermission.launch(Manifest.permission.CAMERA);
                         Intent myCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         startActivityForResult(myCamera, CAMERA_REQ_CODE);
                     }
@@ -90,20 +104,19 @@ public class Profile extends AppCompatActivity {
 
         @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+            super.onActivityResult(requestCode, resultCode, data);
 
-        switch (requestCode)
-        {
-            case GALLERY_REQ_CODE:
-                if(resultCode==RESULT_OK)
-                bg_profile.setImageURI(data.getData());
-                break;
-            case CAMERA_REQ_CODE:
-                if(resultCode==RESULT_OK){
-                Bundle bundle = data.getExtras();
-                Bitmap bitmapimage = (Bitmap) bundle.get("data");
-                bg_profile.setImageBitmap(bitmapimage);
-                }
+            switch (requestCode) {
+                case GALLERY_REQ_CODE:
+                    if (resultCode == RESULT_OK)
+                        bg_profile.setImageURI(data.getData());
+                    break;
+                case CAMERA_REQ_CODE:
+                    if (resultCode == RESULT_OK) {
+                        Bundle bundle = data.getExtras();
+                        Bitmap bitmapimage = (Bitmap) bundle.get("data");
+                        bg_profile.setImageBitmap(bitmapimage);
+                    }
+            }
         }
-    }
 }
